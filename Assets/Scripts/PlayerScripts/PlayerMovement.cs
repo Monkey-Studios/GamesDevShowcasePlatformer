@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     //Creating a reference and link to the controller so that both scripts can communicate
     public CharacterController2D controller;
+    //Creating reference to the animation handler
+    public Animator playerAnimator;
     //This gets the player movement along the horizontal axis
     float horizontalMovement = 0f;
     //Creating and setting player movement speed
@@ -19,10 +21,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
      horizontalMovement = Input.GetAxisRaw("Horizontal") * runSpeed;
+        //Setting animation for player movement
+        playerAnimator.SetFloat("Player Speed", Mathf.Abs(horizontalMovement));
         //Conducts check for player jump
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;
+            //Setting Jump animation
+            playerAnimator.SetBool("IsPlayerJumping", true);
         }
         //Conducts check for player crouch
         if(Input.GetButtonDown("Crouch"))
@@ -34,6 +40,15 @@ public class PlayerMovement : MonoBehaviour
         {
             crouch = false;
         }
+    }
+    //This function is used by the player controller so that the animation can transition out of jump correctly
+    public void PlayerLanding()
+    {
+        playerAnimator.SetBool("IsPlayerJumping", false);
+    }
+    public void PlayerCrouching(bool playerCrouching )
+    {
+        playerAnimator.SetBool("IsPlayerCrouched", playerCrouching);
     }
     //We used fixed update to then apply those inputs
     private void FixedUpdate()
