@@ -9,6 +9,8 @@ public class PlayerCombat : MonoBehaviour
     //Setting attack range and attack damage points
     public float attackRange = 0.35f;
     public int attackDamage = 40;
+    //Setting player health
+    public int playerHealth = 100;
     //In order to balance the players attack the system needs to have a dps rate set
     public float dmgPerSecond = 2f;
     //Here the system is setting a time window between attacks
@@ -44,6 +46,26 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("Player has hit" + enemy.name);
             enemy.GetComponent<EnemyController>().reduceHealth(attackDamage);
         }
+    }
+    //This function is used and called upon within the enemy attack script to hurt the player
+    public void takeDmg(int enemyDamage)
+    {
+        //When the player is attacked by an enemy their total health is reduced by the total damage of the attack
+        playerHealth -= enemyDamage;
+        //When the player runs out of health the playerKilled function is activated
+        if(playerHealth <= 0 )
+        {
+            playerKilled();
+        }
+    }
+    //This function is called upon when the player has no health remaining
+    void playerKilled()
+    {
+        Debug.Log("Player is dead");
+        //When the player is killed they are disabled and taken to the defeat screen
+        GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.enabled = false;
     }
     private void OnDrawGizmosSelected()
     {
