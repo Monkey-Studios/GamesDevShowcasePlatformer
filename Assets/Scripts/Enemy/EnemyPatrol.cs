@@ -7,9 +7,8 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] 
     //Enemy movement field
     float moveSpeed = 1f;
-    //Getting reference for the rigid body & wall collision box
+    //Getting reference for the rigid body
     Rigidbody2D enemyRigidBody;
-    BoxCollider2D wallCollisionDetection;
     //This checks if the enemies X scale is facing right
     private bool lookingRight()
     {
@@ -27,12 +26,12 @@ public class EnemyPatrol : MonoBehaviour
         //The enemy will move right at the set move speed
         if (lookingRight())
         {
-            enemyRigidBody.velocity = new Vector2(moveSpeed, 0f);
+            enemyRigidBody.velocity = new Vector2(moveSpeed, enemyRigidBody.velocity.y);
         }
         //If not then they will move left at the set move speed
         else
         {
-            enemyRigidBody.velocity = new Vector2(-moveSpeed, 0f);
+            enemyRigidBody.velocity = new Vector2(-moveSpeed, enemyRigidBody.velocity.y);
         }
     }
     private void OnTriggerEnter2D(Collider2D enemyCollide)

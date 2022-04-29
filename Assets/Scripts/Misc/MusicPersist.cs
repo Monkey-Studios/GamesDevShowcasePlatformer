@@ -17,13 +17,4 @@ public class MusicPersist : MonoBehaviour
     {
         DontDestroyOnLoad(transform.gameObject);
     }
-    //void awake()
-    //{
-    //    GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
-    //    if (objs.Length > 1)
-    //        Destroy(this.gameObject);
-    //    //if (!objs[0].GetComponent<AudioSource>().isPlaying)
-    //    //    objs[0].GetComponent<AudioSource>().Play();
-    //    DontDestroyOnLoad(this.gameObject);
-    //}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class PlayerCombat : MonoBehaviour
         if(playerHealth <= 0 )
         {
             playerKilled();
+            SceneManager.LoadScene("GameOverLevelOne");
         }
     }
     //This function is called upon when the player has no health remaining
