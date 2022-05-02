@@ -45,7 +45,14 @@ public class PlayerCombat : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("Player has hit" + enemy.name);
-            enemy.GetComponent<EnemyController>().reduceHealth(attackDamage);
+            try
+            {
+                enemy.GetComponent<EnemyController>().reduceHealth(attackDamage);
+            }
+            catch
+            {
+                enemy.GetComponent<BossController>().reduceBossHealth(attackDamage);
+            }  
         }
     }
     //This function is used and called upon within the enemy attack script to hurt the player

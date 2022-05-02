@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
+    //These are used to handel the bosses health values
+    public int bossMaxHealth = 120;
+    int currentBossHealth;
     //Setting up some variables which will be used for the functionality of detecting and attacking the player.
     public float moveSpeed = 2;
     public float Range;
@@ -28,6 +31,7 @@ public class BossController : MonoBehaviour
     void Start()
     {
         moveSpeed = 0;
+        currentBossHealth = 120;
         bossRigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -153,6 +157,23 @@ public class BossController : MonoBehaviour
                 playerBehind = true;
             }
         }
+    }
+    public void reduceBossHealth(int damage)
+    {
+        //When the boss is hit their total health is reduced
+        currentBossHealth -= damage;
+        //When the boss reaches 0hp they die and the player completes the level
+        if(currentBossHealth <= 0)
+        {
+            bossKilled();
+        }
+    }
+    public void bossKilled()
+    {
+        Debug.Log("The player has killed the level boss!");
+        GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.enabled = false;
     }
     private void OnDrawGizmosSelected()
     {
