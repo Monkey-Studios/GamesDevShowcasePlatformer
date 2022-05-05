@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BossController : MonoBehaviour
 {
     //These are used to handel the bosses health values
@@ -166,6 +166,19 @@ public class BossController : MonoBehaviour
         if(currentBossHealth <= 0)
         {
             bossKilled();
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("FirstLevel"))
+            {
+                SceneManager.LoadScene("YouWinLevelOne");
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SecondLevel"))
+            {
+                SceneManager.LoadScene("YouWinLevelTwo");
+            }
+            else
+            {
+                SceneManager.LoadScene("YouWinLevelThree");
+            }
+                
         }
     }
     public void bossKilled()

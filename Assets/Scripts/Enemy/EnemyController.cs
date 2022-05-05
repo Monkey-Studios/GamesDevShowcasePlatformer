@@ -9,11 +9,13 @@ public class EnemyController : MonoBehaviour
     int currentHealth;
     //Set a range for the enemies attacks along with a total damage output
     float rayRange = 1f;
-    int enemyAttackDmg = 10;
+    int enemyAttackDmg = 5;
     //So that the player isnt killed instantly I have set an attack rate for the enemy
     public float dmgPerSecond = 2f;
     //This function will be used to calcuate how often th enemy can attack
     float attackWindow = 0f;
+    //Animator is referenced to trigger the attack animation
+    public Animator enemyAnimator;
     //Set enemy health at the start of the game
     void Start()
     {
@@ -53,6 +55,7 @@ public class EnemyController : MonoBehaviour
     }
     void enemyAttack()
     {
+        
         //This newly created raycast is used to correctly position the raycast on the enemies body
         Vector2 midPoint = transform.position;
         midPoint.y += 0.8f;
@@ -70,6 +73,7 @@ public class EnemyController : MonoBehaviour
         {
             if (hitPlayer[i].collider != null && hitPlayer[i].collider.tag == ("Player"))
             {
+                enemyAnimator.SetTrigger("EnemyAttack");
                 Debug.Log("I have hit you " + hitPlayer[i].collider.tag);
                 hitPlayer[i].transform.GetComponent<PlayerCombat>().takeDmg(enemyAttackDmg);
                 attackWindow = Time.time + 1f / dmgPerSecond;

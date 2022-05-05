@@ -14,16 +14,39 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void RestartLevel()
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameOverLevelOne"))
+        {
+            SceneManager.LoadScene("FirstLevel");
+        }
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameOverLevelTwo"))
+        {
+            SceneManager.LoadScene("SecondLevel");
+        }
+        else
+        {
+            SceneManager.LoadScene("ThirdLevel");
+        }
+    }
+    public void ProgressLevel()
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("YouWinLevelOne")) 
+        {
+            SceneManager.LoadScene("SecondLevel");
+        }
+        else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("YouWinLevelTwo")) 
+        {
+            SceneManager.LoadScene("ThirdLevel");
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
     public void LoadLevelOne()
     {
         SceneManager.LoadScene("FirstLevel");
     }
-    public void LoadLevelTwo()
-    {
-        SceneManager.LoadScene("SecondLevel");
-    }
-    public void LoadLevelThree()
-    {
-        SceneManager.LoadScene("ThirdLevel");
-    }
+ 
 }

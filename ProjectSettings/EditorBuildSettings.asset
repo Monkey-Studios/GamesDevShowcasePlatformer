@@ -9,12 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 1847f91ff3a946347808241dc95c41a2
   - enabled: 1
-    path: Assets/Scenes/GameOver/GameOverLevelOne.unity
-    guid: ebdb4f037246a1146b0b1ab15602c786
-  - enabled: 1
     path: Assets/Scenes/Levels/FirstLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Levels/SecondLevel.unity
     guid: 5ca8acead6ae2f448860ef7a9056d226
+  - enabled: 1
+    path: Assets/Scenes/You Win/YouWinLevelOne.unity
+    guid: 717302f7063334c4e9170cf2f6e9f211
+  - enabled: 1
+    path: Assets/Scenes/You Win/YouWinLevelTwo.unity
+    guid: 8f63665a366926e41a2f5d2a1f7577f7
+  - enabled: 1
+    path: Assets/Scenes/You Win/YouWinLevelThree.unity
+    guid: 38878a9a40e91da42ae53936df6b5d29
+  - enabled: 1
+    path: Assets/Scenes/GameOver/GameOverLevelOne.unity
+    guid: ebdb4f037246a1146b0b1ab15602c786
+  - enabled: 1
+    path: Assets/Scenes/GameOver/GameOverLevelTwo.unity
+    guid: 2cc692479f5d62743af846b89e0ff4da
+  - enabled: 1
+    path: Assets/Scenes/GameOver/GameOverLevelThree.unity
+    guid: c749cc31014233248b8abb30bd8609d1
   m_configObjects: {}

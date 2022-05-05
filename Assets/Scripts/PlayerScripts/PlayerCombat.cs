@@ -19,6 +19,8 @@ public class PlayerCombat : MonoBehaviour
     /*For enemy detection i'll be using layers specifically for enemies.
      When the player attacks it looks to see if it its on that layer and determines if its an enemy*/
     public LayerMask enemyLayers;
+    //Used to communicate with the animator and trigger attack animation
+    public Animator playerAnimator;
 
     // Update is used to perform checks for the player attacking
     void Update()
@@ -38,6 +40,7 @@ public class PlayerCombat : MonoBehaviour
      If they are within range then the attack will apply damage to the enemy*/
     void PlayerAttack()
     {
+        playerAnimator.SetTrigger("Attack");
         //This creates a cirle around the attack point and checks the objects that have been hit
         //The 2d collider array is used to store all the enemies that have been hit within the radius of the attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers); 
@@ -64,7 +67,18 @@ public class PlayerCombat : MonoBehaviour
         if(playerHealth <= 0 )
         {
             playerKilled();
-            SceneManager.LoadScene("GameOverLevelOne");
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("FirstLevel"))
+            {
+                SceneManager.LoadScene("GameOverLevelOne");
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SecondLevel"))
+            {
+                SceneManager.LoadScene("GameOverLevelTwo");
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOverLevelThree");
+            }
         }
     }
     //This function is called upon when the player has no health remaining
