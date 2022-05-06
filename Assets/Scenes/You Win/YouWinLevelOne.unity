@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 676088067}
   - component: {fileID: 676088066}
   m_Layer: 0
-  m_Name: GameOverJingle
+  m_Name: VictoryJingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,7 +368,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d6a8a4a5f099e994ba4b8cb5e02ef6f4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e94f1bd80b7692249863e6d088bd606a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 819670465}
   - component: {fileID: 819670464}
   m_Layer: 5
-  m_Name: RestartButton
+  m_Name: ProgressButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 1535091953}
   - component: {fileID: 1535091952}
   m_Layer: 5
-  m_Name: GameOver Text
+  m_Name: YouWin Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 2143157672}
   - component: {fileID: 2143157673}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: YouWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

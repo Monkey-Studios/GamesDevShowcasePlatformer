@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
     //Creates public instance so it can be used else where in other scripts
     public static ScoreManager instance;
+    public static bool created = false;
     //References to the text elements along with their default values
     public TextMeshProUGUI playerScoreTxt;
     public TextMeshProUGUI highScoreTxt;
@@ -17,6 +18,16 @@ public class ScoreManager : MonoBehaviour
     //When the game loads an instance of this script is loaded, this means it is also loaded and can be used instantly in other scripts
     private void Awake()
     {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+
+        else
+        {
+            Destroy(this.gameObject);
+        }
         instance = this;
     }
     //Creates links to the GUI text elements
